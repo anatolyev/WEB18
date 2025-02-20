@@ -68,5 +68,27 @@ def show_i():
     return f"Посещение: {i}"
 
 
+@app.route('/parameters/<username>')
+def parameters(username):
+    # http://127.0.0.1:8080/parameters/Пафнутий
+    return f"""<!doctype html>
+    <html lang="ru">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Параметры</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      </head>
+      <body>
+        <h1>Параметры адресной строки</h1>
+        <div class="alert alert-success" role="alert">
+      Привет: {username}
+    </div>
+    
+    </body>
+    </html>"""
+
+
+
 if __name__ == '__main__':
     app.run(port=8080, host="127.0.0.1")
