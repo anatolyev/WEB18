@@ -1,11 +1,13 @@
 import json
-
 from flask import Flask, render_template
 
+
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "1se54tv34234p7'9p;l78234"
 params = {'title': "Домашняя страница сайта",
           'username': 'Анатольев Алёша',
           'number': 1501}
+
 
 @app.route('/')
 @app.route('/index')
