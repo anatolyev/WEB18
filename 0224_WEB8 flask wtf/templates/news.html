@@ -6,10 +6,9 @@
 </head>
 <body>
 <h1>Привет, {{ username }}!</h1>
-{% if number % 2 == 0 %}
-<div>{{ number }} - чётное</div>
-{% else %}
-<div>{{ number }} - нечётное</div>
-{% endif %}
+{% for item in news['news'] %}
+<h2>{{ item['title'] }}</h2>
+<div>{{ item['content'] }}</div>
+{% endfor %}
 </body>
 </html>
