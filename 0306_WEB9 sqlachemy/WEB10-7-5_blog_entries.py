@@ -9,11 +9,11 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 def main():
-    db_session.global_init("db/blogs2.db")
+    db_session.global_init("db/blogs.db")
     db_sess = db_session.create_session()
 
 
-    """
+
     # Добавление по id автора
     news = News(title="Первая новость", content="Привет блог!",
                 user_id=1, is_private=False)
@@ -27,14 +27,14 @@ def main():
     db_sess.add(news)
     db_sess.commit()
 
-# следующий слайд
+
     # Добавление по взаимодействию с записями User в таблице News:
     user = db_sess.query(User).filter(User.id == 1).first()
     news = News(title="Личная запись", content="Эта запись личная",
                 is_private=True)
     user.news.append(news)
     db_sess.commit()
-    """
+
 
     # Далее идет обход списка всех новостей:
     # но перед обходом нужно тоже обновить метод __repr__
