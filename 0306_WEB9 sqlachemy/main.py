@@ -2,10 +2,10 @@ from flask import Flask
 from data import db_session
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'fa234rc34c03jecx3eck_309x3'
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 def main():
-    db_session.global_init("db/blog.db")
+    db_session.global_init("db/blogs.db")
     app.run(port=8080, host="127.0.0.1")
 
 
