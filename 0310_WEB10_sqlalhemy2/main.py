@@ -143,7 +143,7 @@ def edit_news(id):
 # 3-3 Добавляем в шаблон index.html кнопки: "Изменить" и "Удалить"
 
 # Пробуем запустить
-"""
+
 # 3-4 Обработчик удаления записей:
 @app.route('/news_delete/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -158,7 +158,7 @@ def news_delete(id):
     else:
         abort(404)
     return redirect('/')
-"""
+
 
 
 if __name__ == '__main__':
