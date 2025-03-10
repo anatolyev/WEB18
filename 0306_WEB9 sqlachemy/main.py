@@ -40,7 +40,7 @@ def reqister():
             email=form.email.data,
             about=form.about.data
         )
-        user.set_password(form.password.data)
+        # user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
         return redirect('/login')
