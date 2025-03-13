@@ -1,8 +1,7 @@
 from flask import Flask, render_template, redirect, request, abort
-
+from flask import make_response, jsonify
 # 1. Выполним первоначальную настройку модуля. Сначала импортируем нужный класс:
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-
 from forms.news import NewsForm
 from forms.user import RegisterForm, LoginForm
 from data.news import News
@@ -159,6 +158,19 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 # 8. Давайте добавим следующий код в элемент nav базового шаблона:
+
+
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
+
+
+@app.errorhandler(400)
+def bad_request(_):
+    return make_response(jsonify({'error': 'Bad Request'}), 400)
+
 
 if __name__ == '__main__':
     main()
