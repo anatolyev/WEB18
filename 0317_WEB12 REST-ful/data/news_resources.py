@@ -21,7 +21,8 @@ class NewsResource(Resource):
                     news.to_dict(only=('title',
                                        'content',
                                        'user_id',
-                                       'is_private'))
+                                       'is_private',
+                                       'is_published'))
 
             }
         )
@@ -56,7 +57,8 @@ class NewsListResource(Resource):
             title=args['title'],
             content=args['content'],
             user_id=args['user_id'],
-            is_private=args['is_private']
+            is_private=args['is_private'],
+            is_published=args['is_published'],
         )
         db_sess.add(news)
         db_sess.commit()
