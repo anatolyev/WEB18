@@ -6,15 +6,19 @@ from random import randint
 ITER_NUM = 10
 COROUT_NUM = 5
 
-def do_some_work(i):
+async def do_some_work(i):
     for j in range(ITER_NUM):
         print(f"{i * ' ' + chr(9608) + (COROUT_NUM - i) * ' '}"
               f"Работник {i} прогресс: {j} {chr(9632) * j}")
-        time.sleep(0.1 * randint(1, 10))
+        await asyncio.sleep(0.1 * randint(1, 10))
 
-def main():
+async def main():
+    task = []
     for i in range(COROUT_NUM):
-        do_some_work(i)
+        task.append(do_some_work(i))
+    await asyncio.gather(*task)
 
 if __name__ == '__main__':
-    main()
+    if os.name == "nt":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
