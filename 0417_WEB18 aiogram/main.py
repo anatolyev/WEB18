@@ -10,6 +10,8 @@ from aiogram.types import Message
 # Bot token can be obtained via https://t.me/BotFather
 from config import BOT_TOKEN
 
+# Клавиатура
+
 
 # All handlers should be attached to the Router (or Dispatcher)
 dp = Dispatcher()
