@@ -4,6 +4,12 @@ import vk_api
 from login_password import LOGIN, PASSWORD
 
 
+def auth_handler():
+    key = input(f"Введите код двухэтапной авторизации: ")
+    remember_device = True
+    return key, remember_device
+
+
 def captha_handler(captha):
     key = input(f'{captha.get_url()}\n'
                 f'Введите капчу по ссылке выше:')
@@ -12,6 +18,7 @@ def captha_handler(captha):
 
 def main():
     vk_session = vk_api.VkApi(LOGIN, PASSWORD,
+                              auth_handler=auth_handler,
                               captcha_handler=captha_handler)
     try:
         vk_session.auth(token_only=True)
